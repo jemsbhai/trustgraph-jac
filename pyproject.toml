@@ -20,6 +20,16 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 
+packages = [
+    { include = "trustgraph_jac" },
+    { include = "bridge" },
+    { include = "tools" },
+]
+include = [
+    { path = "trustgraph.jac", format = ["sdist", "wheel"] },
+    { path = "jac.toml",       format = ["sdist", "wheel"] },
+]
+
 [tool.poetry.dependencies]
 python         = "^3.10"
 trustandverify = ">=0.2.0"
