@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "trustgraph-jac"
+version = "0.2.0"
+description = "TrustGraph — Jac/Jaseci OSP agentic walker for trustandverify knowledge verification"
+authors = ["Muntaser Syed <jemsbhai@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/jemsbhai/trustgraph-jac"
+repository = "https://github.com/jemsbhai/trustgraph-jac"
+keywords = ["knowledge-verification", "subjective-logic", "jaseci", "jac", "ai-agent", "confidence"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[tool.poetry.dependencies]
+python         = "^3.10"
+trustandverify = ">=0.2.0"
+jaclang        = ">=0.11.0"
+byllm          = ">=0.5.0"
+litellm        = ">=1.0"
+
+[tool.poetry.dev-dependencies]
+pytest         = ">=7.0"
+pytest-asyncio = ">=0.21"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[build-system]
+requires      = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
