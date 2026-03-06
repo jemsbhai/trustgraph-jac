@@ -19,15 +19,14 @@ import os
 def _run(coro):
     """Run an async coroutine synchronously — safe to call from Jac walkers."""
     try:
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            # Already inside an event loop (e.g. Jupyter) — use nest_asyncio
-            import nest_asyncio
-            nest_asyncio.apply()
-            return loop.run_until_complete(coro)
+        loop = asyncio.get_running_loop()
     except RuntimeError:
-        pass
-    return asyncio.run(coro)
+        # No running loop — safe to use asyncio.run()
+        return asyncio.run(coro)
+    # Already inside an event loop (e.g. Jupyter) — use nest_asyncio
+    import nest_asyncio
+    nest_asyncio.apply()
+    return loop.run_until_complete(coro)
 
 
 def _to_dicts(results: list) -> list[dict]:

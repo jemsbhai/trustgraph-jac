@@ -15,8 +15,6 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
 
@@ -31,18 +29,23 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python         = "^3.10"
-trustandverify = ">=0.2.0"
+python         = "^3.12"
 jaclang        = ">=0.11.0"
 byllm          = ">=0.5.0"
 litellm        = ">=1.0"
+trustandverify = {path = "../trustandverify", develop = true}
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest         = ">=7.0"
 pytest-asyncio = ">=0.21"
+pytest-cov     = ">=6.0"
 
 [tool.pytest.ini_options]
+testpaths    = ["tests"]
 asyncio_mode = "auto"
+markers = [
+    "integration: requires external API keys or Jac runtime",
+]
 
 [build-system]
 requires      = ["poetry-core"]
